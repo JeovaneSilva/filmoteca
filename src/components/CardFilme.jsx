@@ -7,6 +7,8 @@ const CardFilme = ({filme}) => {
     <div className=''>
         <img src={ImageURL+filme.poster_path} className='w-[300px] h-[400px]'/>
         <p>{filme.title}</p>
+        <p>Avaliação: {filme.vote_average}</p>
+        <button className='bg-[#8121ed]'>Ver mais</button>
     </div>
   )
 }
