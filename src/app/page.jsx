@@ -1,4 +1,5 @@
 "use client"
+import CardFilme from "@/components/CardFilme";
 import Navbar from "@/components/Navbar";
 import { useEffect,useState } from "react";
 
@@ -26,14 +27,8 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div>
-    {TopFilmes && TopFilmes.map((filme) => {
-      <div>
-        
-        <p key={filme.id}>{filme.title}</p>
-      </div>
-    
-    })}
+      <div className=" w-full mt-20 grid grid-cols-3 place-items-center">
+        {TopFilmes.length > 0 && TopFilmes.map((filme) => <CardFilme key={filme.id} filme={filme}/>)}
     </div>
     </>
   );

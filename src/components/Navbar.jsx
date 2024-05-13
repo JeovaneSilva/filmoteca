@@ -4,8 +4,8 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <header className='w-full h-[70px] bg-[#fbbd01] '>
-        <nav>
+    <header className='w-full h-[70px] bg-[#fbbd01]'>
+        <nav className='flex justify-between'>
             <h2>
                 <Link href="/">FilmoTeca</Link>
             </h2>
