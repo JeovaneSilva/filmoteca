@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <div className=" w-full mt-20 grid grid-cols-3 place-items-center">
+      <div className=" w-full mt-20 grid grid-cols-4 place-items-center">
         {TopFilmes.length > 0 && TopFilmes.map((filme) => <CardFilme key={filme.id} filme={filme}/>)}
     </div>
     </>
