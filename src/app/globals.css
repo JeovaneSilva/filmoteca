@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cor1:#fbbd01,
+  --cor2:#8121ed,
+  --cor3:#ffffff,
+}
