@@ -27,7 +27,13 @@ export default function Home() {
     <>
       <Navbar />
       <div>
-    {TopFilmes && TopFilmes.map((filme) => <p key={filme.id}>{filme.title}</p>)}
+    {TopFilmes && TopFilmes.map((filme) => {
+      <div>
+        
+        <p key={filme.id}>{filme.title}</p>
+      </div>
+    
+    })}
     </div>
     </>
   );
