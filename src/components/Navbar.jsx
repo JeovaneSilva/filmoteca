@@ -5,12 +5,10 @@ import React from 'react'
 const Navbar = () => {
   return (
     <header className='w-full h-[70px] bg-[#fbbd01]'>
-        <nav className='flex justify-between'>
+        <nav className=' h-full text-3xl flex justify-start items-center'>
             <h2>
                 <Link href="/">FilmoTeca</Link>
             </h2>
-
-            <input type="text" placeholder='Digite o nome de um filme' />
         </nav>
     </header>
   )

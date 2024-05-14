@@ -1,17 +1,19 @@
-import React from 'react'
+"use client";
+import { FaRegStar } from "react-icons/fa";
 
 const ImageURL = process.env.NEXT_PUBLIC_IMG
 
 const CardFilme = ({filme}) => {
   return (
-    <div className='mb-10'>
-        <img src={ImageURL+filme.poster_path} className='w-[300px] h-[330px]'/>
-        <div className='bg-[#fbbd01] flex flex-col justify-center items-center'>
-          <h3 className='text-white font-bold text-xl w-[240px] text-center'>{filme.title}</h3>
-          <p>Avaliação: {filme.vote_average}</p>
-          <button className='bg-[#8121ed] w-[100px]'>Ver mais</button>
+    <div className='min-w-[200px] relative'>
+        <img src={ImageURL+filme.poster_path} className=' w-full block m-auto'/>
+        <div className=" flex justify-center items-center flex-col opacity-0 transition-[0.5s] top-0 left-0 absolute w-full h-full bg-[#8021ed50] text-white hover:opacity-[1]">
+          <h1 className="w-[90%] text-center text-lg font-bold">{filme.title}</h1>
+          <p className="flex justify-center items-center gap-2 mt-3"> <FaRegStar className="text-[#fbbd01] text-2xl"/> {filme.vote_average}</p>
+          <button className="w-[100px] h-[40px] rounded-[10px] font-bold mt-3 bg-[#fbbd01] ">Saber Mais</button>
         </div>
         
+
     </div>
   )
 }

@@ -7,3 +7,8 @@
   --cor2:#8121ed,
   --cor3:#ffffff,
 }
+
+.slider::-webkit-scrollbar{
+  width: 0;
+  color: #8021ed44;
+}
