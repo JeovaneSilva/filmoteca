@@ -1,20 +1,18 @@
 "use client"
 import CardFilme from "@/components/CardFilme";
-import Navbar from "@/components/Navbar";
 import { useEffect,useState } from "react";
-import { useRouter } from 'next/navigation'
 
 const FilmesURL = process.env.NEXT_PUBLIC_API
 const chaveAPI = process.env.NEXT_PUBLIC_API_KEY
 
 export default function Home() {
 
-  const router = useRouter()
+ 
 
   const [TopFilmes, setTopFilmes] = useState([])
   const [popularFilmes, setPopularFilmes] = useState([])
   const [FilmesCinema, setFilmesCinema] = useState([])
-  const [search, setSearch] = useState([])
+  
 
   // const router = useRouter();
 
@@ -46,32 +44,10 @@ export default function Home() {
     FilmesEmCinema(EmCinemaURL)
   },[])
 
-  const handlesubmit = (e) => {
-    e.preventDefault()
-    console.log(search)
-
-    if(!search) return 
-
-    router.push(`search?q=${search}`)
-    setSearch("")
-  }
-
   console.log(popularFilmes)
 
   return (
     <>
-      <Navbar />
-
-      <div className="w-full flex justify-center items-center mt-9 mb-[4rem]">
-        <form onSubmit={handlesubmit}>
-          <input className="border-2 border-[#fbbd01] p-1 w-[500px] h-[50px] rounded-[10px]" 
-          type="text" 
-          placeholder='Digite o nome de um filme'
-          onChange={(e) => setSearch(e.target.value)}
-          value={search} />
-        </form>
-      </div>
-
       <section>
         <h1 className="text-3xl mt-7">Filmes Mais Votados</h1>
         <div className="slider mt-[10px] flex overflow-y-auto gap-[30px]">
