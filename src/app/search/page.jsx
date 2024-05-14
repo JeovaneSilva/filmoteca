@@ -28,13 +28,11 @@ export default function Search() {
   },[query])
   
     return (
-      <main>
-        <section>
-        <h1 className="text-3xl mt-7">Resultados para: {query}</h1>
-        <div className="slider mt-[10px] flex overflow-y-auto gap-[30px]">
+      <main className="flex flex-col items-center">
+        <h1 className="text-4xl  mt-10 mb-8 font-bold">Resultados para: <span className="text-[#fbbd01]">{query}</span></h1>
+        <div className="mt-[10px] mb-[30px] w-[80%] grid grid-cols-4 place-items-center gap-[30px]">
           {filmes.length > 0 && filmes.map((filme) => <CardFilme key={filme.id} filme={filme}/>)}
         </div>
-      </section>
       </main>
     );
   }

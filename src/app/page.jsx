@@ -7,8 +7,6 @@ const chaveAPI = process.env.NEXT_PUBLIC_API_KEY
 
 export default function Home() {
 
- 
-
   const [TopFilmes, setTopFilmes] = useState([])
   const [popularFilmes, setPopularFilmes] = useState([])
   const [FilmesCinema, setFilmesCinema] = useState([])
