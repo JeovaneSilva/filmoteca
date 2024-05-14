@@ -2,12 +2,14 @@
 import CardFilme from "@/components/CardFilme";
 import Navbar from "@/components/Navbar";
 import { useEffect,useState } from "react";
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 const FilmesURL = process.env.NEXT_PUBLIC_API
 const chaveAPI = process.env.NEXT_PUBLIC_API_KEY
 
 export default function Home() {
+
+  const router = useRouter()
 
   const [TopFilmes, setTopFilmes] = useState([])
   const [popularFilmes, setPopularFilmes] = useState([])
