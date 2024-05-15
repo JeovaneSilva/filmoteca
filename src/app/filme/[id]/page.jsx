@@ -27,7 +27,7 @@ export default function Filme() {
     const FilmeURL = `${FilmesURL}${id}?${chaveAPI}`
 
     getFilme(FilmeURL)
-  }, [])
+  }, [id])
 
   const FormatCurrency = (number) => {
     return number.toLocaleString("en-Us", {
@@ -35,13 +35,14 @@ export default function Filme() {
       currency: "USD",
     })
   }
+  
 
     return (
       <main className="flex w-full">
         {filme && (
           <section className="w-full flex-col flex justify-center items-center">
             <div className="mt-6">
-              <img src={ImageURL+filme.poster_path} className='h-[450px]'/>
+              <img src={ImageURL+filme.poster_path} alt={filme.title} className='h-[450px]'/>
             </div>
 
             <div className="flex flex-col items-center">
@@ -91,7 +92,7 @@ export default function Filme() {
                 <div className="grid grid-cols-2 sm:flex gap-6 mt-4 mb-6 ">
                   {empresas.map(item => (
                     <div className="border-2 p-1 rounded-[50%] w-[70px] h-[70px] flex items-center justify-center bg-white" key={item.id}>
-                      <img src={ImageURL+item.logo_path} alt="" />
+                      <img src={ImageURL+item.logo_path} alt={item.name} />
                     </div>
                   ))}
                 </div>
