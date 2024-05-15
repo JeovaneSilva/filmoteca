@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import { FaMoneyCheckAlt,FaPiggyBank } from "react-icons/fa";
+import Loading from "@/app/loading";
 
 const FilmesURL = process.env.NEXT_PUBLIC_API
 const chaveAPI = process.env.NEXT_PUBLIC_API_KEY
@@ -13,6 +14,7 @@ export default function Filme() {
   const [filme, setFilme] = useState(null)
   const [generos, setGeneros] = useState([])
   const [empresas, setEmpresas] = useState([])
+  const [loading, setLoading] = useState(true);
 
   const getFilme = async (url) => {
     const res = await fetch(url);
@@ -20,7 +22,7 @@ export default function Filme() {
     setFilme(data)
     setGeneros(data.genres)
     setEmpresas(data.production_companies)
-    console.log(data)
+    setLoading(false);
   }
 
   useEffect(() => {
@@ -35,8 +37,13 @@ export default function Filme() {
       currency: "USD",
     })
   }
-  
 
+  if (loading) {
+    return (
+      <Loading/>
+    );
+  }
+  
     return (
       <main className="flex w-full">
         {filme && (

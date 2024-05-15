@@ -3,20 +3,23 @@ import { useEffect,useState } from "react";
 import { useSearchParams } from 'next/navigation'
 import { Suspense } from 'react'
 import CardFilme from "@/components/CardFilme";
+import Loading from "../loading";
 
 const searchURl = process.env.NEXT_PUBLIC_SEARCH
 const chaveAPI = process.env.NEXT_PUBLIC_API_KEY
 
 const SearchSuspense = () => {
-  const searchParams = useSearchParams()
 
+  const searchParams = useSearchParams()
   const[filmes, setFilmes] = useState([])
+  const [loading, setLoading] = useState(true);
   const query = searchParams.get("q")
 
   const GetSearchQuery = async (url) => {
     const res = await fetch(url);
     const data = await res.json()
     setFilmes(data.results) 
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -24,6 +27,12 @@ const SearchSuspense = () => {
 
     GetSearchQuery(SearchURL)
   },[query])
+
+  if (loading) {
+    return (
+      <Loading/>
+    );
+  }
 
   return (
     <main className="flex flex-col items-center">
@@ -38,8 +47,8 @@ const SearchSuspense = () => {
 export default function Search() {
 
     return (
-      <Suspense>
-        <SearchSuspense/>
+      <Suspense fallback={<div className="flex justify-center items-center h-screen"><div className="loader"></div></div>}>
+        <SearchSuspense />
       </Suspense>
     );
   }

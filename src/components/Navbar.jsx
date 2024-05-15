@@ -32,9 +32,9 @@ const Navbar = () => {
                 </button>
               </Link>
             ):(<form onSubmit={handlesubmit}>
-              <input className="border-2 border-black rounded-[10px] mr-3 p-1  w-[200px] h-[35px] text-lg sm:text-xl sm:w-[350px] sm:h [40px]" 
+              <input className="border-2 border-black rounded-[10px] mr-3 p-1  w-[200px] h-[35px] text-lg sm:w-[350px] sm:h-[45px]" 
                   type="text" 
-                  placeholder='Busque um filme'
+                  placeholder='Busque um filme...'
                   onChange={(e) => setSearch(e.target.value)}
                   value={search} />
             </form>)}

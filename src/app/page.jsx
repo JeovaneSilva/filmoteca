@@ -1,6 +1,7 @@
 "use client"
 import CardFilme from "@/components/CardFilme";
 import { useEffect,useState } from "react";
+import Loading from "./loading";
 
 const FilmesURL = process.env.NEXT_PUBLIC_API
 const chaveAPI = process.env.NEXT_PUBLIC_API_KEY
@@ -10,6 +11,7 @@ export default function Home() {
   const [TopFilmes, setTopFilmes] = useState([])
   const [popularFilmes, setPopularFilmes] = useState([])
   const [FilmesCinema, setFilmesCinema] = useState([])
+  const [loading, setLoading] = useState(true);
   
 
   // const router = useRouter();
@@ -37,10 +39,23 @@ export default function Home() {
     const PopularURL = `${FilmesURL}popular?${chaveAPI}`
     const EmCinemaURL = `${FilmesURL}now_playing?${chaveAPI}`
 
-    FilmesMaisVotados(MelhoresFilmesURL)
-    PopularFilmes(PopularURL)
-    FilmesEmCinema(EmCinemaURL)
+    const fetchData = async () => {
+      await Promise.all([
+        FilmesMaisVotados(MelhoresFilmesURL),
+        PopularFilmes(PopularURL),
+        FilmesEmCinema(EmCinemaURL)
+      ]);
+      setLoading(false);
+    };
+
+    fetchData();
   },[])
+
+  if (loading) {
+    return (
+      <Loading/>
+    );
+  }
 
   return (
     <>
