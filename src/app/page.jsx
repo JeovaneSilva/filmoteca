@@ -42,26 +42,24 @@ export default function Home() {
     FilmesEmCinema(EmCinemaURL)
   },[])
 
-  console.log(popularFilmes)
-
   return (
     <>
       <section>
-        <h1 className="text-3xl mt-7">Filmes Mais Votados</h1>
+        <h1 className="text-2xl sm:text-3xl mt-7">Filmes Mais Votados</h1>
         <div className="slider mt-[10px] flex overflow-y-auto gap-[30px]">
           {TopFilmes.length > 0 && TopFilmes.map((filme) => <CardFilme key={filme.id} filme={filme}/>)}
         </div>
       </section>
 
       <section>
-        <h1 className="text-3xl mt-7">Filmes Populares</h1>
+        <h1 className="text-2xl sm:text-3xl mt-7">Filmes Populares</h1>
         <div className="slider mt-[10px] flex overflow-y-auto gap-[30px]">
           {popularFilmes.length > 0 && popularFilmes.map((filme) => <CardFilme key={filme.id} filme={filme}/>)}
         </div>
       </section>
 
       <section>
-        <h1 className="text-3xl mt-7">Filmes Em Lançamento</h1>
+        <h1 className="text-2xl sm:text-3xl mt-7">Filmes Em Lançamento</h1>
         <div className="slider mt-[10px] flex overflow-y-auto gap-[30px]">
           {FilmesCinema.length > 0 && FilmesCinema.map((filme) => <CardFilme key={filme.id} filme={filme}/>)}
         </div>

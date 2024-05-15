@@ -1,16 +1,17 @@
 "use client"
 import Link from 'next/link'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter,useParams } from 'next/navigation'
 
 const Navbar = () => {
+
+  const {id} = useParams()
 
   const [search, setSearch] = useState("")
   const router = useRouter()
 
   const handlesubmit = (e) => {
     e.preventDefault()
-    console.log(search)
 
     if(!search) return 
 
@@ -24,13 +25,20 @@ const Navbar = () => {
             <h2>
                 <Link href="/">FilmoTeca</Link>
             </h2>
-              <form onSubmit={handlesubmit}>
-                <input className="border-2 border-black text-xl p-1 w-[350px] h-[40px] rounded-[10px] mr-3" 
-                    type="text" 
-                    placeholder='Digite o nome de um filme'
-                    onChange={(e) => setSearch(e.target.value)}
-                    value={search} />
-              </form>
+            {id ? (
+              <Link href="/">
+                <button className=' border-2 p-1 text-xl font-bold border-[#8121ed] mr-5 rounded-[13px] w-[100px]'>
+                  Voltar
+                </button>
+              </Link>
+            ):(<form onSubmit={handlesubmit}>
+              <input className="border-2 border-black rounded-[10px] mr-3 p-1  w-[200px] h-[35px] text-lg sm:text-xl sm:w-[350px] sm:h [40px]" 
+                  type="text" 
+                  placeholder='Busque um filme'
+                  onChange={(e) => setSearch(e.target.value)}
+                  value={search} />
+            </form>)}
+              
         </nav>
     </header>
   )

@@ -12,3 +12,10 @@
   width: 0;
   color: #8021ed44;
 }
+
+.infoFilmeP{
+  border: 1.5px solid black;
+  padding: 5px;
+  font-size: 15px;
+  border-radius: 10px;
+}
