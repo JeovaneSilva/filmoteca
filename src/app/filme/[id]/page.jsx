@@ -22,6 +22,7 @@ export default function Filme() {
     setFilme(data)
     setGeneros(data.genres)
     setEmpresas(data.production_companies)
+    console.log(data.production_companies)
     setLoading(false);
   }
 
@@ -43,13 +44,17 @@ export default function Filme() {
       <Loading/>
     );
   }
+
+  console.log(empresas)
   
     return (
       <main className="flex w-full">
         {filme && (
           <section className="w-full flex-col flex justify-center items-center">
             <div className="mt-6">
-              <img src={ImageURL+filme.poster_path} alt={filme.title} className='h-[450px]'/>
+              <img src={filme.poster_path ? `${ImageURL}${filme.poster_path}` : `/SEMCAPA.png`} 
+              alt={filme.title} 
+              className='h-[450px]'/>
             </div>
 
             <div className="flex flex-col items-center">
@@ -81,27 +86,40 @@ export default function Filme() {
               </div>
 
               <div className="mt-8 mb-2">
-                <p className="w-[320px] text-sm sm:w-[500px] sm:text-base md:w-[750px] text-justify"><span className="font-bold">Descrição:</span> {filme.overview}</p>
+                <p className="w-[320px] text-sm sm:w-[500px] sm:text-base md:w-[750px] text-justify"><span className="font-bold">Descrição:</span> {filme.overview ? filme.overview : "Sem Descrição"} </p>
               </div>
 
               <div className="flex flex-col items-center bg-[#8121ed] min-w-[300px]  sm:min-w-[500px] rounded-[20px] mt-8 mb-8">
                 <h3 className="text-2xl font-bold mt-2">Gêneros</h3>
                 <div className="grid grid-cols-2 place-items-center sm:flex sm:justify-center sm:items-center gap-4 mt-4 mb-6 ">
-                  {generos.map(item => (
-                    <div className="border-2 w-[80%] p-1 rounded-[10px] flex items-center justify-center text-center" key={item.id}>
-                      <p className=" flex items-center justify-centertext-xs h-[40px] sm:text-base font-bold pl-[10px] pr-[10px] sm:h-[45px] ">{item.name}</p>
-                      {/* Adicione mais propriedades aqui, se necessário */}
+                {generos.length > 0 ? (
+                  generos.map(item => (
+                    <div className="border-2 w-[80%] p-1 rounded-[10px] flex items-center justify-center text-center"
+                      key={item.id}>
+
+                      <p className="flex items-center justify-center text-xs h-[40px] sm:text-base font-bold pl-[10px[10px] sm:h-[45px]">
+                        {item.name}
+                      </p>
                     </div>
-                  ))}
+                  ))
+                ) : (
+                  <p className="text-center">Nenhum gênero encontrado.</p>
+                )}
                 </div>
 
                 <h3 className="text-2xl font-bold mt-2">Produção Por:</h3>
                 <div className="grid grid-cols-2 sm:flex gap-6 mt-4 mb-6 ">
-                  {empresas.map(item => (
+                {empresas.length > 0 ? (
+                  empresas.map(item => (
                     <div className="border-2 p-1 rounded-[50%] w-[70px] h-[70px] flex items-center justify-center bg-white" key={item.id}>
-                      <img src={ImageURL+item.logo_path} alt={item.name} />
+                      <img src={item.logo_path ? `${ImageURL}${item.logo_path}` : `/SEMCAPAProdutora.png`} 
+                      alt={item.name}
+                      title={item.name} />
                     </div>
-                  ))}
+                  ))
+                ) : (
+                  <p className="text-center">Nenhum Produtor encontrado.</p>
+                )}
                 </div>
 
               </div>
