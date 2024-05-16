@@ -3,6 +3,7 @@ import CardFilme from "@/components/CardFilme";
 import { useEffect,useState } from "react";
 import Loading from "./loading";
 
+
 const FilmesURL = process.env.NEXT_PUBLIC_API
 const chaveAPI = process.env.NEXT_PUBLIC_API_KEY
 
