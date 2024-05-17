@@ -4,6 +4,7 @@
 
 Projeto de uma Biblioteca de Filmes Web que utiliza a API da TMDB.
 
+-  [ ]  Projeto Parcialmente Completo.
 * Disponível em [filmoteca](https://filmoteca-seven.vercel.app/).
 * Hospedado na Vercel.
 * API Utilizada: [TMDb Api](https://developer.themoviedb.org/reference/intro/getting-started).
